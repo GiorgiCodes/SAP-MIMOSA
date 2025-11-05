@@ -475,15 +475,17 @@ namespace SAP_MIMOSAapp.Controllers
                 return Json(new { success = false, message = "Prompt and LLM Type are required." });
             try
             {
+                Console.WriteLine($"[v0] AskAI called with prompt: {req.prompt}");
+
                 if (req.mappings != null && req.mappings.Any())
                 {
-                    Console.WriteLine("mappings passed");
+                    Console.WriteLine($"[v0] {req.mappings.Count} existing mappings passed");
                 }
                 else
                 {
-                    Console.WriteLine("no mappings passed");
+                    Console.WriteLine("[v0] No existing mappings passed");
                 }
-                
+
                 var aiResponse = await GetAIResponse(req.prompt, req.llmType, req.mappings, req.systemPrompt);
                 if (!string.IsNullOrWhiteSpace(aiResponse))
                 {
@@ -492,6 +494,8 @@ namespace SAP_MIMOSAapp.Controllers
                         var parseResponse = JsonSerializer.Deserialize<MappingDocument>(aiResponse, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
                         if (parseResponse != null)
                         {
+                            Console.WriteLine($"[v0] AI returned {parseResponse.mappings?.Count ?? 0} mappings");
+
                             // Load previous prompts if any
                             parseResponse.prompts = req.prompts ?? new List<string>();
                             if (!string.IsNullOrWhiteSpace(req.prompt) && (parseResponse.prompts.Count == 0))
@@ -508,10 +512,40 @@ namespace SAP_MIMOSAapp.Controllers
                                     text = parseResponse.prompt,
                                     createdAt = parseResponse.createdAt
                                 });
+                            }
 
+                            if (parseResponse.mappings != null && parseResponse.mappings.Any())
+                            {
+                                Console.WriteLine("[v0] Calculating accuracy for mappings...");
+                                var (overall, details) = await CheckAccuracy(parseResponse.mappings);
+
+                                if (overall != null)
+                                {
+                                    Console.WriteLine($"[v0] Accuracy calculated - Overall: {overall.accuracyRate}%, Table Coverage: {overall.infoOmitted}%");
+                                    Console.WriteLine($"[v0] Missing fields count: {overall.missingFields?.Count ?? 0}");
+                                    if (overall.missingFields != null)
+                                    {
+                                        foreach (var field in overall.missingFields)
+                                        {
+                                            Console.WriteLine($"[v0] Table {field.Key}: {field.Value.Count} missing fields");
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("[v0] WARNING: CheckAccuracy returned null for overall");
+                                }
+
+                                parseResponse.accuracyResult = overall;
+                                parseResponse.accuracySingleMappingPair = details;
+                            }
+                            else
+                            {
+                                Console.WriteLine("[v0] WARNING: No mappings to calculate accuracy for");
                             }
 
                             SaveMappingTempFile(parseResponse);
+                            Console.WriteLine("[v0] Mapping saved to temp file, redirecting to Create");
                             return Json(new { success = true, redirectUrl = Url.Action("Create") });
                         }
                         else
@@ -519,10 +553,10 @@ namespace SAP_MIMOSAapp.Controllers
                             return Json(new { success = false, message = "AI did not return a valid mapping document." });
                         }
                     }
-                    catch (JsonException)
+                    catch (JsonException ex)
                     {
-                        Console.WriteLine($"Raw AI response: {aiResponse}");
-
+                        Console.WriteLine($"[v0] JSON parsing error: {ex.Message}");
+                        Console.WriteLine($"[v0] Raw AI response: {aiResponse}");
                         return Json(new { success = false, message = "AI returned an invalid mapping format." });
                     }
                 }
@@ -533,6 +567,7 @@ namespace SAP_MIMOSAapp.Controllers
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"[v0] Exception in AskAI: {ex.Message}");
                 return Json(new { success = false, message = $"Error communicating with AI: {ex.Message}" });
             }
         }

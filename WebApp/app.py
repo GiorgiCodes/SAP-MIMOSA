@@ -29,7 +29,12 @@ rawDataStoragePath = "Data/rawDataOfAIResponses.json"
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://localhost:7090"],
+    allow_origins=[
+        "http://localhost:5000",  # .NET Core HTTP
+        "https://localhost:5001",  # .NET Core HTTPS
+        "http://localhost:8000",  # FastAPI for testing
+        "http://localhost:5015"    # new frontend port
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
