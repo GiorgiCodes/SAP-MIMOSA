@@ -1,0 +1,13 @@
+# Treat all .cs files as C#
+*.cs linguist-language=C#
+
+# Treat all .js files as JavaScript
+*.js linguist-language=JavaScript
+
+# Treat all .ts files as TypeScript
+*.ts linguist-language=TypeScript
+
+# Ignore build folders
+bin/* linguist-vendored
+obj/* linguist-vendored
+node_modules/* linguist-vendored
