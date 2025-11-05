@@ -6450,5 +6450,395 @@
                 "infoOmitted": 2.42
             }
         ]
+    },
+    {
+        "createdAt": "2025-11-05T15:10:07",
+        "mapID": "047",
+        "LLMType": "gpt-4.1",
+        "prompts": [
+            "generate workorder mappings"
+        ],
+        "promptHistory": [
+            {
+                "text": "generate workorder mappings",
+                "createdAt": "2025-11-05T15:10:07"
+            }
+        ],
+        "mappings": [
+            {
+                "sap": {
+                    "platform": "SAP",
+                    "entityName": "WorkOrder",
+                    "fieldName": "AUFNR",
+                    "description": "Order Number: Unique identifier for the work order",
+                    "dataType": "CHAR",
+                    "notes": "Primary key for SAP work order",
+                    "fieldLength": "12"
+                },
+                "mimosa": {
+                    "platform": "MIMOSA",
+                    "entityName": "WorkOrder",
+                    "fieldName": "WorkOrderID",
+                    "description": "Internal unique identifier for the work order",
+                    "dataType": "string",
+                    "notes": "Primary identifier in MIMOSA",
+                    "fieldLength": "36"
+                }
+            },
+            {
+                "sap": {
+                    "platform": "SAP",
+                    "entityName": "WorkOrder",
+                    "fieldName": "KTEXT",
+                    "description": "Short Text: Description of work order",
+                    "dataType": "CHAR",
+                    "notes": "Short description",
+                    "fieldLength": "40"
+                },
+                "mimosa": {
+                    "platform": "MIMOSA",
+                    "entityName": "WorkOrder",
+                    "fieldName": "Name",
+                    "description": "Short description or name of the work order",
+                    "dataType": "string",
+                    "notes": "Corresponds to SAP short text",
+                    "fieldLength": "255"
+                }
+            },
+            {
+                "sap": {
+                    "platform": "SAP",
+                    "entityName": "WorkOrder",
+                    "fieldName": "ERDAT",
+                    "description": "Created On: Date work order was created",
+                    "dataType": "DATS",
+                    "notes": "Format: YYYYMMDD",
+                    "fieldLength": "8"
+                },
+                "mimosa": {
+                    "platform": "MIMOSA",
+                    "entityName": "WorkOrder",
+                    "fieldName": "CreateDateTime",
+                    "description": "Date and time when the work order was created",
+                    "dataType": "datetime",
+                    "notes": "ISO 8601 format",
+                    "fieldLength": "20"
+                }
+            },
+            {
+                "sap": {
+                    "platform": "SAP",
+                    "entityName": "WorkOrder",
+                    "fieldName": "IDAT2",
+                    "description": "Basic Finish Date: Scheduled end date",
+                    "dataType": "DATS",
+                    "notes": "Basic finish date field",
+                    "fieldLength": "8"
+                },
+                "mimosa": {
+                    "platform": "MIMOSA",
+                    "entityName": "WorkOrder",
+                    "fieldName": "ScheduledFinishDate",
+                    "description": "Date the work order is scheduled to be finished",
+                    "dataType": "date",
+                    "notes": "Expected completion date",
+                    "fieldLength": "10"
+                }
+            },
+            {
+                "sap": {
+                    "platform": "SAP",
+                    "entityName": "WorkOrder",
+                    "fieldName": "QMNUM",
+                    "description": "Notification Number linked to the work order",
+                    "dataType": "CHAR",
+                    "notes": "Links to maintenance notification",
+                    "fieldLength": "12"
+                },
+                "mimosa": {
+                    "platform": "MIMOSA",
+                    "entityName": "WorkOrder",
+                    "fieldName": "RelatedNotificationID",
+                    "description": "Identifier for notification related to the work order",
+                    "dataType": "string",
+                    "notes": "References associated notification",
+                    "fieldLength": "36"
+                }
+            },
+            {
+                "sap": {
+                    "platform": "SAP",
+                    "entityName": "WorkOrder",
+                    "fieldName": "AUART",
+                    "description": "Order Type: Defines the type of work order",
+                    "dataType": "CHAR",
+                    "notes": "Order type code",
+                    "fieldLength": "4"
+                },
+                "mimosa": {
+                    "platform": "MIMOSA",
+                    "entityName": "WorkOrder",
+                    "fieldName": "WorkOrderType",
+                    "description": "Type or category of work order",
+                    "dataType": "string",
+                    "notes": "Equivalent to SAP order type",
+                    "fieldLength": "10"
+                }
+            }
+        ],
+        "prompt": "generate workorder mappings",
+        "accuracyResult": {
+            "accuracyRate": 57.02,
+            "descriptionSimilarity": 81.4,
+            "mimosaSimilarity": 20.0,
+            "sapSimilarity": 60.0,
+            "dataType": 66.67,
+            "infoOmitted": 0.0
+        },
+        "accuracySingleMappingPair": [
+            {
+                "accuracyRate": 67.46,
+                "descriptionSimilarity": 89.86,
+                "mimosaSimilarity": 20.0,
+                "sapSimilarity": 60.0,
+                "dataType": 100.0,
+                "infoOmitted": 0.0
+            },
+            {
+                "accuracyRate": 65.62,
+                "descriptionSimilarity": 82.49,
+                "mimosaSimilarity": 20.0,
+                "sapSimilarity": 60.0,
+                "dataType": 100.0,
+                "infoOmitted": 0.0
+            },
+            {
+                "accuracyRate": 41.11,
+                "descriptionSimilarity": 84.45,
+                "mimosaSimilarity": 20.0,
+                "sapSimilarity": 60.0,
+                "dataType": 0.0,
+                "infoOmitted": 0.0
+            },
+            {
+                "accuracyRate": 37.49,
+                "descriptionSimilarity": 69.95,
+                "mimosaSimilarity": 20.0,
+                "sapSimilarity": 60.0,
+                "dataType": 0.0,
+                "infoOmitted": 0.0
+            },
+            {
+                "accuracyRate": 65.31,
+                "descriptionSimilarity": 81.23,
+                "mimosaSimilarity": 20.0,
+                "sapSimilarity": 60.0,
+                "dataType": 100.0,
+                "infoOmitted": 0.0
+            },
+            {
+                "accuracyRate": 65.11,
+                "descriptionSimilarity": 80.45,
+                "mimosaSimilarity": 20.0,
+                "sapSimilarity": 60.0,
+                "dataType": 100.0,
+                "infoOmitted": 0.0
+            }
+        ]
+    },
+    {
+        "createdAt": "2025-11-05T15:19:29",
+        "mapID": "048",
+        "LLMType": "gpt-4.1",
+        "prompts": [
+            "generate functional location mappings"
+        ],
+        "promptHistory": [
+            {
+                "text": "generate functional location mappings",
+                "createdAt": "2025-11-05T15:19:29"
+            }
+        ],
+        "mappings": [
+            {
+                "sap": {
+                    "platform": "SAP",
+                    "entityName": "Functional Location",
+                    "fieldName": "TPLNR",
+                    "description": "Functional Location Number - unique identifier for a functional location.",
+                    "dataType": "CHAR",
+                    "notes": "Primary key for functional location records.",
+                    "fieldLength": "30"
+                },
+                "mimosa": {
+                    "platform": "MIMOSA",
+                    "entityName": "FunctionalLocation",
+                    "fieldName": "FunctionalLocationID",
+                    "description": "Unique identifier of a functional location.",
+                    "dataType": "String",
+                    "notes": "Serves as the primary key for a functional location.",
+                    "fieldLength": "64"
+                }
+            },
+            {
+                "sap": {
+                    "platform": "SAP",
+                    "entityName": "Functional Location",
+                    "fieldName": "PLTXT",
+                    "description": "Description of the functional location.",
+                    "dataType": "CHAR",
+                    "notes": "Short, user-friendly text describing the location.",
+                    "fieldLength": "40"
+                },
+                "mimosa": {
+                    "platform": "MIMOSA",
+                    "entityName": "FunctionalLocation",
+                    "fieldName": "Name",
+                    "description": "Short, human-readable name for the functional location.",
+                    "dataType": "String",
+                    "notes": "Can be mapped to short descriptions or display names.",
+                    "fieldLength": "128"
+                }
+            },
+            {
+                "sap": {
+                    "platform": "SAP",
+                    "entityName": "Functional Location",
+                    "fieldName": "STORT",
+                    "description": "Location of Equipment (physical location reference).",
+                    "dataType": "CHAR",
+                    "notes": "Physical location reference text.",
+                    "fieldLength": "15"
+                },
+                "mimosa": {
+                    "platform": "MIMOSA",
+                    "entityName": "FunctionalLocation",
+                    "fieldName": "PhysicalLocationText",
+                    "description": "Textual description of the physical location reference.",
+                    "dataType": "String",
+                    "notes": "Can be used to reference or describe the physical address or area.",
+                    "fieldLength": "64"
+                }
+            },
+            {
+                "sap": {
+                    "platform": "SAP",
+                    "entityName": "Functional Location",
+                    "fieldName": "BEBER",
+                    "description": "Work Center responsible for location.",
+                    "dataType": "CHAR",
+                    "notes": "Associated with the functional location's maintenance.",
+                    "fieldLength": "8"
+                },
+                "mimosa": {
+                    "platform": "MIMOSA",
+                    "entityName": "FunctionalLocation",
+                    "fieldName": "ResponsibleOrganizationID",
+                    "description": "Identifier for the organization responsible for the functional location.",
+                    "dataType": "String",
+                    "notes": "Used for determining responsible party for maintenance and operations.",
+                    "fieldLength": "32"
+                }
+            },
+            {
+                "sap": {
+                    "platform": "SAP",
+                    "entityName": "Functional Location",
+                    "fieldName": "STRNO",
+                    "description": "Superior Functional Location (parent in hierarchy).",
+                    "dataType": "CHAR",
+                    "notes": "Links to parent functional location.",
+                    "fieldLength": "30"
+                },
+                "mimosa": {
+                    "platform": "MIMOSA",
+                    "entityName": "FunctionalLocation",
+                    "fieldName": "ParentFunctionalLocationID",
+                    "description": "References the parent functional location in the hierarchy.",
+                    "dataType": "String",
+                    "notes": "Maintains hierarchy of functional locations.",
+                    "fieldLength": "64"
+                }
+            },
+            {
+                "sap": {
+                    "platform": "SAP",
+                    "entityName": "Functional Location",
+                    "fieldName": "SWERK",
+                    "description": "Maintenance Plant",
+                    "dataType": "CHAR",
+                    "notes": "Plant responsible for the technical object.",
+                    "fieldLength": "4"
+                },
+                "mimosa": {
+                    "platform": "MIMOSA",
+                    "entityName": "FunctionalLocation",
+                    "fieldName": "SiteID",
+                    "description": "Identifier for the site or plant responsible for the location.",
+                    "dataType": "String",
+                    "notes": "Used to reference the plant at which the functional location resides.",
+                    "fieldLength": "16"
+                }
+            }
+        ],
+        "prompt": "generate functional location mappings",
+        "accuracyResult": {
+            "accuracyRate": 55.56,
+            "descriptionSimilarity": 72.23,
+            "mimosaSimilarity": 0.0,
+            "sapSimilarity": 50.0,
+            "dataType": 100.0,
+            "infoOmitted": 0.0
+        },
+        "accuracySingleMappingPair": [
+            {
+                "accuracyRate": 62.65,
+                "descriptionSimilarity": 90.61,
+                "mimosaSimilarity": 0.0,
+                "sapSimilarity": 60.0,
+                "dataType": 100.0,
+                "infoOmitted": 0.0
+            },
+            {
+                "accuracyRate": 58.72,
+                "descriptionSimilarity": 74.88,
+                "mimosaSimilarity": 0.0,
+                "sapSimilarity": 60.0,
+                "dataType": 100.0,
+                "infoOmitted": 0.0
+            },
+            {
+                "accuracyRate": 54.6,
+                "descriptionSimilarity": 78.42,
+                "mimosaSimilarity": 0.0,
+                "sapSimilarity": 40.0,
+                "dataType": 100.0,
+                "infoOmitted": 0.0
+            },
+            {
+                "accuracyRate": 50.21,
+                "descriptionSimilarity": 60.85,
+                "mimosaSimilarity": 0.0,
+                "sapSimilarity": 40.0,
+                "dataType": 100.0,
+                "infoOmitted": 0.0
+            },
+            {
+                "accuracyRate": 57.11,
+                "descriptionSimilarity": 88.43,
+                "mimosaSimilarity": 0.0,
+                "sapSimilarity": 40.0,
+                "dataType": 100.0,
+                "infoOmitted": 0.0
+            },
+            {
+                "accuracyRate": 50.05,
+                "descriptionSimilarity": 40.21,
+                "mimosaSimilarity": 0.0,
+                "sapSimilarity": 60.0,
+                "dataType": 100.0,
+                "infoOmitted": 0.0
+            }
+        ]
     }
 ]
