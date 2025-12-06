@@ -1,7 +1,22 @@
-# .NET build artifacts
-bin/
-obj/
-*.pdb
-*.dll
-*.exe
-*.cache.json
+# Visual Studio
+.vs/
+
+# JetBrains
+.idea/
+*.sln.iml
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Temp files
+*~
+*.bak
+*.swp
+.localhistory/
