@@ -18,7 +18,6 @@ bld/
 [Ll]ogs/
 
 # Visual Studio specific
-.vs/
 .vscode/
 *.suo
 *.user

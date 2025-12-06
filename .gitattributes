@@ -1,0 +1,11 @@
+# Treat Razor views as C# 
+C#/**/*.cshtml linguist-language=C#
+
+# Mark minified files as generated (excluded from stats)
+*.min.js linguist-generated
+*.min.css linguist-generated
+
+# Auto-generated C# files
+*.Designer.cs linguist-generated
+*.g.cs linguist-generated
+*.g.i.cs linguist-generated
