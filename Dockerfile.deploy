@@ -39,7 +39,7 @@ RUN apt-get update && \
 # 2. OPTIMIZATION: Install Heavy ML Libraries (CPU ONLY)
 # --------------------------------------------------------
 # If you use TensorFlow, change 'torch' to 'tensorflow-cpu'
-RUN pip3 install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+RUN pip3 install --no-cache-dir torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cpu
 
 # --------------------------------------------------------
 # 3. Install other Python Requirements
