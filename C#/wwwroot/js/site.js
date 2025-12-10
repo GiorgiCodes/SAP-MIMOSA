@@ -7,14 +7,14 @@ window.addEventListener('DOMContentLoaded', function () {
     var waveArrows = document.querySelectorAll('.wave-arrow');
 
     // Add a class to enable animation
-    waveLetters.forEach(function (el) { el.classList.add('wave-animate'); });
+    // waveLetters.forEach(function (el) { el.classList.add('wave-animate'); });
     waveArrows.forEach(function (el) { el.classList.add('wave-animate'); });
 
     // After 10 seconds, remove the animation class
     setTimeout(function () {
         waveLetters.forEach(function (el) { el.classList.remove('wave-animate'); });
         waveArrows.forEach(function (el) { el.classList.remove('wave-animate'); });
-    }, 10000);
+    }, 4000);
 });
 
 //Display tooltips

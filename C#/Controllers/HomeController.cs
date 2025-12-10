@@ -704,6 +704,13 @@ namespace SAP_MIMOSAapp.Controllers
             var content = await response.Content.ReadAsStringAsync();
             return Content(content, "application/json");
         }
+
+        public IActionResult About()
+        {            
+            ViewBag.Active = nameof(About);
+            ViewBag.Title = "About";
+            return View();
+        }
     }
 }
 
